@@ -112,6 +112,7 @@ const cot = ()=>{
         :photo="producto.photo"
         :description="producto.description"
         :name="producto.name"
+        :producto="producto"
         
         />
       </SwiperSlide>

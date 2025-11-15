@@ -19,7 +19,15 @@ const modules = [Pagination, Navigation, Autoplay]
 
 const DataStore = UseDataStore()
 
-console.log(DataStore.products)
+
+const filter = ref("")
+
+const Data_filter = computed(()=>
+   DataStore.products.filter(p => p.category.toLowerCase().includes(filter.value.toLowerCase()))
+)
+
+const cambiar_filtro = (filtro)=> {filter.value = filtro}
+
 </script>
 
 <template>
@@ -34,8 +42,8 @@ console.log(DataStore.products)
     <h1 class="text-5xl text-white font-bold">Tecnología que protege vidas</h1>
     <p class="text-white ">En Especifika diseñamos, instalamos y mantenemos centrales de esterilización completas, con autoclaves de última generación y soporte técnico especializado para garantizar seguridad hospitalaria.</p>
     <div class=" flex gap-4 mt-2">
-        <button class=" px-5 p-1 bg-white rounded-full">productos</button>
-        <button class="text-white px-5 p-1 rounded-full border-2 border-white">Servicios y mantenimiento</button>
+        <button class=" px-5 p-1 bg-white rounded-full" @click="navigateTo('/productos')">productos</button>
+        <button class="text-white px-5 p-1 rounded-full border-2 border-white" @click="navigateTo('/servicios')">Servicios y mantenimiento</button>
     </div>
     </div>
     <div class="max-w-[40%] z-10">
@@ -63,7 +71,7 @@ console.log(DataStore.products)
         :photo="producto.photo"
         :description="producto.description"
         :name="producto.name"
-        
+        :producto="producto"
         />
       </SwiperSlide>
       
@@ -85,28 +93,31 @@ console.log(DataStore.products)
 </main>
 <button_wha></button_wha>
 
+
+<!--productos-->
  
 <section>
+   
 
     <div class="px-8 sm:px-20  flex justify-between mt-8 mb-4  ">
         <h2 class="text-3xl sm:text-4xl font-bold">Productos</h2>
         <div class="flex gap-3">
             
-            <button class=" bg-gray-200 flex items-center justify-center gap-2 p-2  rounded-full shadow-lg">
+            <button @click="cambiar_filtro('')"  class=" bg-gray-200 focus:outline-2 hover:bg-gray-400 focus:bg-black focus:text-white  flex items-center justify-center gap-2 p-2  rounded-full shadow-lg">
             <span class="ml-2">Todos</span>
             <div class="flex items-center bg-gray-300 inset-shadow-sm border-2 border-gray-700 rounded-full p-1">      
                 <Icon name="tabler:adjustments-filled"  class="text-white bg-black text-xl "/>
             </div>
            </button>
 
-           <button class=" bg-gray-200 flex items-center justify-center gap-2 p-2  rounded-full shadow-lg">
+           <button @click="cambiar_filtro('medico')"  class=" bg-gray-200 hover:bg-gray-400 focus:bg-black focus:text-white flex items-center justify-center gap-2 p-2  rounded-full shadow-lg">
             <span class="ml-2">Médicos</span>
             <div class="flex items-center bg-gray-300 inset-shadow-sm border-2 border-gray-700 rounded-full p-1">      
                 <Icon name="medical-icon:i-first-aid"  class="text-white bg-black text-xl "/>
             </div>
            </button>
 
-           <button class=" bg-gray-200 flex items-center justify-center gap-2 p-2  rounded-full shadow-lg">
+           <button @click="cambiar_filtro('dental')"  class=" bg-gray-200 hover:bg-gray-400 focus:bg-black focus:text-white flex items-center justify-center gap-2 p-2  rounded-full shadow-lg">
             <span class="ml-2">Dentales</span>
             <div class="flex items-center bg-gray-300 inset-shadow-sm border-2 border-gray-700 rounded-full p-1">      
                 <Icon name="medical-icon:i-dental"  class="text-white bg-black text-xl "/>
@@ -115,7 +126,7 @@ console.log(DataStore.products)
     </div>
     </div>
 <div class="flex flex-wrap px-6 sm:px-1  gap-2 Px-10  justify-center" >
-<product_card v-for="card in DataStore.products" :key="card"
+<product_card v-for="card in Data_filter" :key="card"
 :description="card.description"
 :name="card.name"
 :photo="card.photo"
@@ -124,6 +135,13 @@ console.log(DataStore.products)
 </div>
 
 </section>
+
+<div class="p-3">
+    <div class="bg-black rounded-lg lg:rounded-full p-3 px-4 flex-col sm:flex-row justify-between gap-4 ">
+        <p class=" text-white font-bold text-2xl w-full  text-center">¿Buscas algún repuesto?</p>
+       <button class="bg-white p-1 px-3 rounded-full lg:w-36 w-full mt-3 lg:mt-0"> Buscar</button>
+    </div>
+</div>
 
 
 
@@ -180,7 +198,7 @@ console.log(DataStore.products)
             
                    
          <Swiper
-    :spaceBetween="100"
+      :spaceBetween="100"
       :modules="modules"
       :slides-per-view="2"
       :navigation="false"

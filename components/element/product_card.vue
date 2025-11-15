@@ -1,6 +1,6 @@
 <script setup>
 
-defineProps(["name", "description", "photo", "link", "producto"])
+defineProps(["name", "description", "photo", "link", "producto",])
 
 const prueba = "hola"
 </script>

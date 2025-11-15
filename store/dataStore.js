@@ -184,7 +184,34 @@ export const UseDataStore = defineStore('DataStore', ()=>{
             ],
 
 
-            Soluciones_Especificas:[]
+            Soluciones_Especificas:[
+                {
+                    name:"Mantenimiento",
+                    description:"scs",
+                    photo:"",
+                    points:[
+                         "El diseño estrecho permite instalar este modelo en un espacio pequeño manteniendo una gran capacidad de carga",
+                         "El uso de agua refrigerada del edificio puede reducir  el consumo hasta en un 90%, haciendo que sus instalaciones sean más ecológicas y económicas",
+                         "La gran pantalla táctil a color le ofrece una visión general fácil de leer de los valores de la cámara en tiempo real, así como gráficos de tendencias de temperatura y presión.",
+                         "Transfiera datos de ciclo y códigos de barras asociados a una PC usando software de monitoreo remoto opcional y escáner de código de barras"
+                    ]
+
+                },
+
+                {
+                    name:"Eliminación de basuras",
+                    description:"scs",
+                    photo:"",
+                    points:[
+                         "El diseño estrecho permite instalar este modelo en un espacio pequeño manteniendo una gran capacidad de carga",
+                         "El uso de agua refrigerada del edificio puede reducir  el consumo hasta en un 90%, haciendo que sus instalaciones sean más ecológicas y económicas",
+                         "La gran pantalla táctil a color le ofrece una visión general fácil de leer de los valores de la cámara en tiempo real, así como gráficos de tendencias de temperatura y presión.",
+                         "Transfiera datos de ciclo y códigos de barras asociados a una PC usando software de monitoreo remoto opcional y escáner de código de barras"
+                    ]
+
+                }
+
+            ]
 
         }
     
