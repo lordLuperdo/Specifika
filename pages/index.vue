@@ -35,7 +35,7 @@ const cambiar_filtro = (filtro)=> {filter.value = filtro}
 
 
 
-<main class="flex  bg-cover w-full h-[100vh] flex-col md:flex-row">
+<main class="flex  bg-cover w-full  sm:h-[100vh] flex-col md:flex-row">
    
 
     <div class="p-7  flex flex-col mt-[40%] gap-3 sm:w-[60%] sm:mt-[12%] z-10">
@@ -46,7 +46,7 @@ const cambiar_filtro = (filtro)=> {filter.value = filtro}
         <button class="text-white px-5 p-1 rounded-full border-2 border-white" @click="navigateTo('/servicios')">Servicios y mantenimiento</button>
     </div>
     </div>
-    <div class="max-w-[40%] z-10">
+    <div class="sm:max-w-[40%] h-90 sm:h-full z-10 ">
        
        
         <Swiper
